@@ -4,11 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./dist/output.css" />
-    <title>Generador de contraseñas</title>
+    <title>Password Generator</title>
   </head>
-  <div>
+  <body>
     <div
       class="min-w-screen min-h-screen bg-gradient-to-tr from-zinc-800 from-0% via-red-600 via-50% to-yellow-400 to-100% flex items-center justify-center px-5 py-5"
+    >
       <div class="area">
         <ul class="circles">
           <li></li>
@@ -22,24 +23,23 @@
           <li></li>
           <li></li>
         </ul>
-     
-      >
+      </div>
       <div
-        class="w-full max-w-md mx-auto rounded-lg shadow-gray-950 shadow-2xl border-b-black p-5 text-gray-800"
+        class="w-full max-w-md p-5 mx-auto text-gray-800 border-black rounded-lg shadow-2xl border-1 shadow-gray-950"
       >
         <!-- Input de contraseña -->
         <div class="relative mb-4">
           <input
             type="password"
             id="password"
-            class="w-full pl-3 pr-10 py-2 border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors"
+            class="w-full py-2 pl-3 pr-10 transition-colors border-2 border-red-300 rounded-md focus:outline-none focus:border-indigo-500"
             placeholder="Password"
             autocomplete="off"
           />
           <button
             id="togglePassword"
             aria-label="Mostrar/Ocultar contraseña"
-            class="absolute top-2 right-2 w-7 h-7 text-gray-400 hover:text-indigo-500 focus:outline-none"
+            class="absolute text-gray-400 top-2 right-2 w-7 h-7 hover:text-indigo-500 focus:outline-none"
             type="button"
           >
             👁️
@@ -47,21 +47,21 @@
         </div>
 
         <!-- Barra de seguridad -->
-        <div class="flex space-x-1 mb-5" id="strengthBar">
-          <div class="flex-1 h-2 rounded-xl bg-gray-200"></div>
-          <div class="flex-1 h-2 rounded-xl bg-gray-200"></div>
-          <div class="flex-1 h-2 rounded-xl bg-gray-200"></div>
-          <div class="flex-1 h-2 rounded-xl bg-gray-200"></div>
-          <div class="flex-1 h-2 rounded-xl bg-gray-200"></div>
+        <div class="flex mb-5 space-x-1" id="strengthBar">
+          <div class="flex-1 h-2 bg-gray-200 rounded-xl"></div>
+          <div class="flex-1 h-2 bg-gray-200 rounded-xl"></div>
+          <div class="flex-1 h-2 bg-gray-200 rounded-xl"></div>
+          <div class="flex-1 h-2 bg-gray-200 rounded-xl"></div>
+          <div class="flex-1 h-2 bg-gray-200 rounded-xl"></div>
         </div>
 
-        <hr class="border-gray-200 mb-5" />
+        <hr class="mb-5 border-gray-200" />
 
         <!-- Longitud contraseña -->
         <div class="mb-4">
           <label
             for="passwordLength"
-            class="block text-xs font-semibold text-gray-500 mb-1"
+            class="block mb-1 text-xs font-semibold text-gray-500"
           >
             PASSWORD LENGTH
           </label>
@@ -71,7 +71,7 @@
             min="1"
             max="30"
             value="12"
-            class="w-full px-3 py-2 mb-2 border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors"
+            class="w-full px-3 py-2 mb-2 transition-colors border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500"
           />
           <input
             id="passwordLengthRange"
@@ -84,7 +84,7 @@
         </div>
 
         <!-- Opciones de caracteres -->
-        <div class="grid grid-cols-2 gap-x-4 gap-y-2 mb-2">
+        <div class="grid grid-cols-2 mb-2 gap-x-4 gap-y-2">
           <label
             class="flex items-center space-x-2 text-xs font-semibold text-gray-500"
           >
