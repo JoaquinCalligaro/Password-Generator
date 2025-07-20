@@ -1,4 +1,4 @@
-export function setupTogglePassword(passwordInput: HTMLInputElement) {
+function setupTogglePassword(passwordInput: HTMLInputElement) {
   // Obtiene el botón de mostrar/ocultar contraseña.
 const togglePasswordButton = document.getElementById("togglePassword");
 // Agrega un listener al botón de mostrar/ocultar contraseña.

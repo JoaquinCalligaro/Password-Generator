@@ -45,13 +45,12 @@
           <button
             id="togglePassword"
             aria-label="Mostrar/Ocultar contraseña"
-            class="absolute text-gray-400 top-2 right-2 w-7 h-7 hover:text-indigo-500 focus:outline-none"
+            class="absolute text-gray-400 top-2 right-2 w-7 h-7 hover:text-indigo-500 focus:outline-none z-10"
             type="button"
           >
-            <img src="./assets/icons/eye-open.png" alt="" class = "" />
+            <img src="./assets/icons/eye-open.png"/>
             <img
               src="./assets/icons/closed-eye.png"
-              alt=""
               class="hidden"
             />
           </button>
@@ -291,9 +290,8 @@
       </div>
     </div>
   </body>
-    <script  type="module" src="./dist/index.js"></script>
-    <script type="module" src="./dist/checkboxes.js"></script>
-    <script type="module" src="./dist/app.js"></script>
-    <script type="module" src="./dist/modules/togglePassword.js"></script>
-    
+    <script  type="module" src="./dist/index.js" defer></script>
+    <script  type="module" src="./dist/modules/generatePassword.js" defer></script>
+    <script  type="module" src="./dist/modules/togglePassword.js" defer></script>
+
 </html>
