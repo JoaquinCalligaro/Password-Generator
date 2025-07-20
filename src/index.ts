@@ -2,5 +2,5 @@ import { setupTogglePassword } from './modules/togglePassword';
 
 const passwordInput = document.getElementById("password") as HTMLInputElement;
 
-// Esta línea es CLAVE
+// Se llama a la funcion
 setupTogglePassword(passwordInput);
