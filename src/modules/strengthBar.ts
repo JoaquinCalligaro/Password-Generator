@@ -112,7 +112,7 @@ class PasswordStrengthBar {
       }
     }
 
-    console.log(`Barras: ${barsToFill}, Color: ${color}`);
+    
   }
 
   public refresh(): void {

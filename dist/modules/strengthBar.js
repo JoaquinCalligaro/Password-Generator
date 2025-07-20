@@ -92,7 +92,6 @@ class PasswordStrengthBar {
                 this.bars[i].className = `flex-1 h-2 rounded-xl transition-all duration-300 ${color}`;
             }
         }
-        console.log(`Barras: ${barsToFill}, Color: ${color}`);
     }
     refresh() {
         this.updateStrengthBar();
