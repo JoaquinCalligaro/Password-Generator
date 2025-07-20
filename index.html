@@ -4,11 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./dist/output.css" />
+       <link
+      rel="icon"
+      href="./assets/icons/favicon.png"
+      sizes="32x32"
+      type="image/png"
+    />
     <title>Password Generator</title>
   </head>
   <body>
     <div
-      class="min-w-screen min-h-screen bg-gradient-to-tr from-zinc-800 from-0% via-red-600 via-50% to-yellow-400 to-100% flex items-center justify-center px-5 py-5"
+      class="relative flex items-center justify-center min-h-screen px-5 py-5 min-w-screen"
     >
       <div class="area">
         <ul class="circles">
@@ -24,10 +30,15 @@
           <li></li>
         </ul>
       </div>
+
       <div
-        class="w-full max-w-md p-5 mx-auto text-gray-800 border-black rounded-lg shadow-2xl border-1 shadow-gray-950"
+        class="relative z-20 w-full max-w-md p-5 mx-auto font-normal text-white border shadow-2xl rounded-xl backdrop-blur-md bg-gray-500/30 border-white/50 backdrop-saturate-150 ring-1 ring-black/5 shadow-black"
+        <!--
+        Input
+        de
+        contraseña
+        --
       >
-        <!-- Input de contraseña -->
         <div class="relative mb-4">
           <input
             type="password"
@@ -42,7 +53,12 @@
             class="absolute text-gray-400 top-2 right-2 w-7 h-7 hover:text-indigo-500 focus:outline-none"
             type="button"
           >
-            👁️
+            <img src="./assets/icons/eye-open.png" alt="" />
+            <img
+              src="./assets/icons/icons8-closed-eye-50.png"
+              alt=""
+              class="hidden"
+            />
           </button>
         </div>
 
@@ -61,7 +77,7 @@
         <div class="mb-4">
           <label
             for="passwordLength"
-            class="block mb-1 text-xs font-semibold text-gray-500"
+            class="block mb-1 text-xs font-semibold text-white"
           >
             PASSWORD LENGTH
           </label>
@@ -85,30 +101,197 @@
 
         <!-- Opciones de caracteres -->
         <div class="grid grid-cols-2 mb-2 gap-x-4 gap-y-2">
-          <label
-            class="flex items-center space-x-2 text-xs font-semibold text-gray-500"
-          >
-            <input id="charsLower" type="checkbox" checked />
-            <span>LOWERCASE</span>
-          </label>
-          <label
-            class="flex items-center space-x-2 text-xs font-semibold text-gray-500"
-          >
-            <input id="charsUpper" type="checkbox" checked />
-            <span>UPPERCASE</span>
-          </label>
-          <label
-            class="flex items-center space-x-2 text-xs font-semibold text-gray-500"
-          >
-            <input id="charsNumeric" type="checkbox" checked />
-            <span>NUMBERS</span>
-          </label>
-          <label
-            class="flex items-center space-x-2 text-xs font-semibold text-gray-500"
-          >
-            <input id="charsSymbols" type="checkbox" checked />
-            <span>SYMBOLS</span>
-          </label>
+
+              <div
+                role="button"
+                class="flex items-center w-full p-0 transition-all rounded-lg hover:bg-gray-950/20 focus:bg-slate-500 active:bg-slate-500"
+              >
+                <label
+                  for="check-vertical-list-group1"
+                  class="flex items-center w-full px-3 py-2 cursor-pointer"
+                >
+                  <div class="inline-flex items-center">
+                    <label
+                      class="relative flex items-center cursor-pointer"
+                      for="check-vertical-list-group1"
+                    >
+                      <input
+                        type="checkbox"
+                        class="w-5 h-5 transition-all border rounded shadow appearance-none cursor-pointer peer hover:shadow-md border-slate-300 checked:bg-slate-800 checked:border-slate-800"
+                        id="check-vertical-list-group1"
+                      />
+                      <span
+                        class="absolute text-white transform -translate-x-1/2 -translate-y-1/2 opacity-0 peer-checked:opacity-100 top-1/2 left-1/2"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="h-3.5 w-3.5"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                          stroke="currentColor"
+                          stroke-width="1"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                            clip-rule="evenodd"
+                          ></path>
+                        </svg>
+                      </span>
+                    </label>
+                    <label
+                      class="ml-2 text-sm text-white cursor-pointer"
+                      for="check-vertical-list-group1 "
+                    >
+                      Uppercase
+
+                    </label>
+                  </div>
+                </label>
+              </div>
+
+              <div
+                role="button"
+                class="flex items-center w-full p-0 transition-all rounded-lg hover:bg-gray-950/20 focus:bg-slate-500 active:bg-slate-500"
+              >
+                <label
+                  for="check-vertical-list-group2"
+                  class="flex items-center w-full px-3 py-2 cursor-pointer"
+                >
+                  <div class="inline-flex items-center">
+                    <label
+                      class="relative flex items-center cursor-pointer"
+                      for="check-vertical-list-group2"
+                    >
+                      <input
+                        type="checkbox"
+                        class="w-5 h-5 transition-all border rounded shadow appearance-none cursor-pointer peer hover:shadow-md border-slate-300 checked:bg-slate-800 checked:border-slate-800"
+                        id="check-vertical-list-group2"
+                      />
+                      <span
+                        class="absolute text-white transform -translate-x-1/2 -translate-y-1/2 opacity-0 peer-checked:opacity-100 top-1/2 left-1/2"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="h-3.5 w-3.5"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                          stroke="currentColor"
+                          stroke-width="1"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                            clip-rule="evenodd"
+                          ></path>
+                        </svg>
+                      </span>
+                    </label>
+                    <label
+                      class="ml-2 text-sm text-white cursor-pointer"
+                      for="check-vertical-list-group2  "
+                    >
+                      Lowercase
+                    </label>
+                  </div>
+                </label>
+              </div>
+
+              <div
+                role="button"
+                class="flex items-center w-full p-0 transition-all rounded-lg hover:bg-gray-950/20 focus:bg-slate-500 active:bg-slate-500"
+              >
+                <label
+                  for="check-vertical-list-group3"
+                  class="flex items-center w-full px-3 py-2 cursor-pointer"
+                >
+                  <div class="inline-flex items-center">
+                    <label
+                      class="relative flex items-center cursor-pointer"
+                      for="check-vertical-list-group3"
+                    >
+                      <input
+                        type="checkbox"
+                        class="w-5 h-5 transition-all border rounded shadow appearance-none cursor-pointer peer hover:shadow-md border-slate-300 checked:bg-slate-800 checked:border-slate-800"
+                        id="check-vertical-list-group3"
+                      />
+                      <span
+                        class="absolute text-white transform -translate-x-1/2 -translate-y-1/2 opacity-0 peer-checked:opacity-100 top-1/2 left-1/2"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="h-3.5 w-3.5"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                          stroke="currentColor"
+                          stroke-width="1"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                            clip-rule="evenodd"
+                          ></path>
+                        </svg>
+                      </span>
+                    </label>
+                    <label
+                      class="ml-2 text-sm text-white cursor-pointer"
+                      for="check-vertical-list-group3"
+                    >
+                      Numbers
+                    </label>
+                  </div>
+                </label>
+              </div>
+              
+              <div
+                role="button"
+                class="flex items-center w-full p-0 transition-all rounded-lg hover:bg-gray-950/20 focus:bg-slate-500 active:bg-slate-500"
+              >
+                <label
+                  for="check-vertical-list-group4"
+                  class="flex items-center w-full px-3 py-2 cursor-pointer"
+                >
+                  <div class="inline-flex items-center">
+                    <label
+                      class="relative flex items-center cursor-pointer"
+                      for="check-vertical-list-group4"
+                    >
+                      <input
+                        type="checkbox"
+                        class="w-5 h-5 transition-all border rounded shadow appearance-none cursor-pointer peer hover:shadow-md border-slate-300 checked:bg-slate-800 checked:border-slate-800"
+                        id="check-vertical-list-group4"
+                      />
+                      <span
+                        class="absolute text-white transform -translate-x-1/2 -translate-y-1/2 opacity-0 peer-checked:opacity-100 top-1/2 left-1/2"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="h-3.5 w-3.5"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                          stroke="currentColor"
+                          stroke-width="1"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                            clip-rule="evenodd"
+                          ></path>
+                        </svg>
+                      </span>
+                    </label>
+                    <label
+                      class="ml-2 text-sm text-white cursor-pointer"
+                      for="check-vertical-list-group4"
+                    >
+                      Symbols
+                    </label>
+                  </div>
+                </label>
+              </div>
+            </nav>
+          </div>
         </div>
       </div>
     </div>
