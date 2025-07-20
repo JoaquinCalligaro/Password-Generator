@@ -53,9 +53,9 @@
   background: -webkit-linear-gradient(to top right, #dc2626 50%, #facc15 100%);
   background: linear-gradient(
     to top right,
-    #27272a 0%,
-    #dc2626 50%,
-    #facc15 100%
+    #3c0084 20%,
+    #050065 70%,
+    #be26dc 150%
   );
   width: 100%;
   height: 100vh;
