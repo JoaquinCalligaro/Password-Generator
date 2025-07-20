@@ -1,6 +1,8 @@
 @import 'tailwindcss';
-
 @plugin "@midudev/tailwind-animations";
+@plugin "tailwindcss-motion";
+@plugin 'tailwindcss-animated';
+
 /*Start Animations*/
 @-webkit-keyframes animatetop {
   from {

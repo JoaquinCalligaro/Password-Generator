@@ -2,10 +2,14 @@
   "dependencies": {
     "@midudev/tailwind-animations": "^0.2.0",
     "@preline/strong-password": "^3.1.0",
-    "@tailwindcss/cli": "^4.1.11",
-    "tailwindcss": "^4.1.11"
+    "@tailwindcss/cli": "^4.1.11"
   },
   "scripts": {
     "dev": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^4.1.11",
+    "tailwindcss-animated": "^2.0.0",
+    "tailwindcss-motion": "^1.1.1"
   }
 }
