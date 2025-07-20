@@ -42,18 +42,28 @@
             placeholder="Password"
             autocomplete="off"
           />
-          <button
-            id="togglePassword"
-            aria-label="Mostrar/Ocultar contraseña"
-            class="absolute text-gray-400 top-2 right-2 w-7 h-7 hover:text-indigo-500 focus:outline-none z-10"
-            type="button"
-          >
-            <img src="./assets/icons/eye-open.png"/>
-            <img
-              src="./assets/icons/closed-eye.png"
-              class="hidden"
+            <input
+              type="password"
+              id="password"
+              placeholder="Password"
+              autocomplete="off"
             />
-          </button>
+                                        <input
+                                          type="password"
+                                          id="password"
+                                          placeholder="Password"
+                                          autocomplete="off"
+                                        />
+
+                                        <label for="togglePasswordCheckbox" style="margin-left: 10px; cursor: pointer;">
+                                          <input type="checkbox" id="togglePasswordCheckbox" />
+                                          Mostrar contraseña
+                                        </label>
+
+
+
+
+
         </div>
 
         <!-- Barra de seguridad -->
@@ -291,7 +301,8 @@
     </div>
   </body>
     <script  type="module" src="./dist/index.js" defer></script>
-    <script  type="module" src="./dist/modules/generatePassword.js" defer></script>
     <script  type="module" src="./dist/modules/togglePassword.js" defer></script>
+    <script  type="module" src="./dist/modules/generatePassword.js" defer></script>
 
+    
 </html>
