@@ -3,296 +3,287 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="module" src="./dist/darkMode.js"></script>
     <link rel="stylesheet" href="./dist/output.css" />
-       <link
+    <link
       rel="icon"
       href="./assets/icons/favicon.png"
       sizes="32x32"
-      type="image/png"
-    />
+      type="image/png" />
     <title>Password Generator</title>
   </head>
   <body>
     <div
-      class="relative flex items-center justify-center min-h-screen px-5 py-5 min-w-screen"
-    >
+      class="relative flex items-center justify-center min-h-screen px-5 py-5 min-w-screen">
       <div class="area">
-        <ul class="circles">
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
+        <ul class="circles"></ul>
       </div>
-
       <div
-        class="relative z-20 w-full max-w-md p-5 mx-auto font-normal text-white duration-100 border shadow-2xl rounded-xl backdrop-blur-md bg-gray-500/30 border-white/50 backdrop-saturate-150 ring-1 ring-black/5 shadow-black "
-        <!-- Input de contraseña -->
+        class="fixed top-4 right-4 z-50 sm:top-3 sm:right-3 max-sm:top-2 max-sm:right-2">
+        <button
+          type="button"
+          class="hs-dark-mode-active:hidden block hs-dark-mode font-medium text-gray-800 rounded-full hover:bg-gray-200 focus:outline-hidden focus:bg-gray-200 dark:text-neutral-200 dark:hover:bg-neutral-800 dark:focus:bg-neutral-800"
+          data-hs-theme-click-value="dark">
+          <span
+            class="group inline-flex shrink-0 justify-center items-center size-9"
+            ><svg
+              class="shrink-0 size-4"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewbox="0 0 24 24"
+              fill="none"
+              stroke="currentcolor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg
+          ></span>
+        </button>
+        <button
+          type="button"
+          class="hs-dark-mode-active:block hidden hs-dark-mode font-medium text-gray-800 rounded-full hover:bg-gray-200 focus:outline-hidden focus:bg-gray-200 dark:text-neutral-200 dark:hover:bg-neutral-800 dark:focus:bg-neutral-800"
+          data-hs-theme-click-value="light">
+          <span
+            class="group inline-flex shrink-0 justify-center items-center size-9"
+            ><svg
+              class="shrink-0 size-4"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewbox="0 0 24 24"
+              fill="none"
+              stroke="currentcolor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2"></path>
+              <path d="M12 20v2"></path>
+              <path d="m4.93 4.93 1.41 1.41"></path>
+              <path d="m17.66 17.66 1.41 1.41"></path>
+              <path d="M2 12h2"></path>
+              <path d="M20 12h2"></path>
+              <path d="m6.34 17.66-1.41 1.41"></path>
+              <path d="m19.07 4.93-1.41 1.41"></path></svg
+          ></span>
+        </button>
+      </div>
+      <div
+        class="relative z-20 w-full max-w-md p-5 mx-auto font-normals form-style glow-style text-white duration-100 border rounded-xl backdrop-blur-md bg-gray-500/30 border-gray-700/50 backdrop-saturate-150">
         <div class="relative mb-4">
-<input
-            type="password" disabled
+          <input
+            type="password"
+            disabled
             id="password"
             class="w-full py-2 pl-3 pr-10 transition-colors border-2 border-red-300 rounded-md focus:outline-none focus:border-indigo-500 animate-fade-down animate-duration-500 animate-delay-200"
             placeholder="Password"
-            autocomplete="off"
-          />
-
+            autocomplete="off" />
           <button
             id="togglePasswordButton"
             aria-label="Mostrar/Ocultar contraseña"
             class="absolute text-gray-400 top-2 right-2 w-7 h-7 hover:text-indigo-500 focus:outline-none"
-            type="button"
-          >
-            <img src="./assets/icons/eye-open.png" alt="" class = "" />
+            type="button">
+            <img src="./assets/icons/eye-open.png" alt="eye-open" class="" />
             <img
               src="./assets/icons/closed-eye.png"
-              alt=""
-              class="hidden"
-            />
+              alt="closed-eye"
+              class="hidden" />
           </button>
         </div>
-
-        <!-- Barra de seguridad -->
-        <div class="flex mb-5 space-x-1 animate-blurred-fade-in" id="strengthBar">
+        <div
+          class="flex mb-5 space-x-1 animate-blurred-fade-in"
+          id="strengthBar">
           <div class="flex-1 h-2 bg-gray-200 rounded-xl"></div>
           <div class="flex-1 h-2 bg-gray-200 rounded-xl"></div>
           <div class="flex-1 h-2 bg-gray-200 rounded-xl"></div>
           <div class="flex-1 h-2 bg-gray-200 rounded-xl"></div>
           <div class="flex-1 h-2 bg-gray-200 rounded-xl"></div>
         </div>
-
-        <hr class="mb-5 border-gray-200 animate-fade-down animate-duration-500 animate-delay-300" />
-
-        <!-- Longitud contraseña -->
+        <hr
+          class="mb-5 border-gray-200 animate-fade-down animate-duration-500 animate-delay-300" />
         <div class="mb-4">
           <label
             for="passwordLength"
             class="block mb-1 text-xs font-semibold text-white animate-fade-down animate-duration-500 animate-delay-1000"
+            >PASSWORD LENGTH</label
           >
-            PASSWORD LENGTH
-          </label>
           <input
-            id="passwordLength" disabled
+            id="passwordLength"
+            disabled
             min="1"
             max="30"
             value="12"
-            class="w-full px-3 py-2 mb-2 transition-colors border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 animate-fade-down animate-delay-1000"
-          />
+            class="w-full px-3 py-2 mb-2 transition-colors border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 animate-fade-down animate-delay-1000" />
           <input
             id="passwordLengthRange"
             type="range"
             min="1"
             max="30"
             value="12"
-            class="w-full animate-fade-down animate-delay-1500"
-          />
+            class="w-full animate-fade-down animate-delay-1500" />
         </div>
-
-        <!-- Opciones de caracteres -->
-          <div class="grid grid-cols-2 mb-2 gap-x-4 gap-y-2">
-
-              <div
-                role="button"
-                class="flex items-center w-full p-0 transition-all rounded-lg hover:bg-gray-950/20 focus:bg-slate-500 active:bg-slate-500 animate-fade animate-duration-500 animate-delay-1500""
-              >
-                <label
+        <div class="grid grid-cols-2 mb-2 gap-x-4 gap-y-2">
+          <div
+            role="button"
+            class="flex items-center w-full p-0 transition-all rounded-lg hover:bg-gray-950/20 focus:bg-slate-500 active:bg-slate-500 animate-fade animate-duration-500 animate-delay-1500">
+            <div class="inline-flex items-center">
+              <label
+                for="check-vertical-list-group1"
+                class="flex items-center w-full px-3 py-2 cursor-pointer"
+                ><label
+                  class="relative flex items-center cursor-pointer"
                   for="check-vertical-list-group1"
-                  class="flex items-center w-full px-3 py-2 cursor-pointer"
-                >
-                  <div class="inline-flex items-center">
-                    <label
-                      class="relative flex items-center cursor-pointer"
-                      for="check-vertical-list-group1"
-                    >
-                      <input
-                        type="checkbox"
-                        class="w-5 h-5 transition-all border rounded-full shadow appearance-none cursor-pointer peer hover:shadow-md border-slate-300 checked:bg-slate-800 checked:border-slate-800"
-                        id="check-vertical-list-group1"
-                      />
-                      <span
-                        class="absolute text-blue-500 transform -translate-x-1/2 -translate-y-1/2 opacity-0 peer-checked:opacity-100 top-1/2 left-1/2"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="h-3.5 w-3.5"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                          stroke="currentColor"
-                          stroke-width="1"
-                        >
-                          <path
-                            fill-rule="evenodd"
-                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                            clip-rule="evenodd"
-                          ></path>
-                        </svg>
-                      </span>
-                    </label>
-                    <label
-                      class="ml-2 text-sm text-white cursor-pointer"
-                      for="check-vertical-list-group1"
-                    >
-                      Uppercase
-
-                    </label>
-                  </div>
-                </label>
-              </div>
-
-              <div
-                role="button"
-                class="flex items-center w-full p-0 transition-all rounded-lg hover:bg-gray-950/20 focus:bg-slate-500 active:bg-slate-500 animate-fade animate-duration-800 animate-delay-2000"
-              >
+                  ><input
+                    type="checkbox"
+                    class="w-5 h-5 transition-all border rounded-full shadow appearance-none cursor-pointer peer hover:shadow-md checked:bg-slate-800 checked:border-black"
+                    id="check-vertical-list-group1" />
+                  <span
+                    class="absolute text-gray-300 dark:text-blue-500 transform -translate-x-1/2 -translate-y-1/2 opacity-0 peer-checked:opacity-100 top-1/2 left-1/2"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-3.5 w-3.5"
+                      viewbox="0 0 20 20"
+                      fill="currentcolor"
+                      stroke="currentcolor"
+                      stroke-width="1">
+                      <path
+                        fill-rule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clip-rule="evenodd"></path></svg></span
+                ></label>
                 <label
-                  for="check-vertical-list-group2"
-                  class="flex items-center w-full px-3 py-2 cursor-pointer"
-                >
-                  <div class="inline-flex items-center">
-                    <label
-                      class="relative flex items-center cursor-pointer"
-                      for="check-vertical-list-group2"
-                    >
-                      <input
-                        type="checkbox"
-                        class="w-5 h-5 transition-all border rounded-full shadow appearance-none cursor-pointer peer hover:shadow-md border-slate-300 checked:bg-slate-800 checked:border-slate-800"
-                        id="check-vertical-list-group2"
-                      />
-                      <span
-                        class="absolute text-blue-500 transform -translate-x-1/2 -translate-y-1/2 opacity-0 peer-checked:opacity-100 top-1/2 left-1/2"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="h-3.5 w-3.5"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                          stroke="currentColor"
-                          stroke-width="1"
-                        >
-                          <path
-                            fill-rule="evenodd"
-                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                            clip-rule="evenodd"
-                          ></path>
-                        </svg>
-                      </span>
-                    </label>
-                    <label
-                      class="ml-2 text-sm text-white cursor-pointer"
-                      for="check-vertical-list-group2"
-                    >
-                      Lowercase
-                    </label>
-                  </div>
-                </label>
-              </div>
-
-              <div
-                role="button"
-                class="flex items-center w-full p-0 transition-all rounded-lg hover:bg-gray-950/20 focus:bg-slate-500 active:bg-slate-500 animate-fade animate-duration-1200 animate-delay-2500"
+                  class="ml-2 text-sm text-white cursor-pointer"
+                  for="check-vertical-list-group1"
+                  >Uppercase</label
+                ></label
               >
-                <label
-                  for="check-vertical-list-group3"
-                  class="flex items-center w-full px-3 py-2 cursor-pointer"
-                >
-                  <div class="inline-flex items-center">
-                    <label
-                      class="relative flex items-center cursor-pointer"
-                      for="check-vertical-list-group3"
-                    >
-                      <input
-                        type="checkbox"
-                        class="w-5 h-5 transition-all border rounded-full shadow appearance-none cursor-pointer peer hover:shadow-md border-slate-300 checked:bg-slate-800 checked:border-slate-800"
-                        id="check-vertical-list-group3"
-                      />
-                      <span
-                        class="absolute text-blue-500 transform -translate-x-1/2 -translate-y-1/2 opacity-0 peer-checked:opacity-100 top-1/2 left-1/2"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="h-3.5 w-3.5"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                          stroke="currentColor"
-                          stroke-width="1"
-                        >
-                          <path
-                            fill-rule="evenodd"
-                            d="M16.707 5.293a1 1 0 010 1.414l-8 8 a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                            clip-rule="evenodd"
-                          ></path>
-                        </svg>
-                      </span>
-                    </label>
-                    <label
-                      class="ml-2 text-sm text-white cursor-pointer"
-                      for="check-vertical-list-group3"
-                    >
-                      Numbers
-                    </label>
-                  </div>
-                </label>
-              </div>
-              
-              <div
-                role="button"
-                class="flex items-center w-full p-0 transition-all rounded-lg hover:bg-gray-950/20 focus:bg-slate-500 active:bg-slate-500 animate-fade animate-duration-1800 animate-delay-3000"
-              >
-                <label
-                  for="check-vertical-list-group4"
-                  class="flex items-center w-full px-3 py-2 cursor-pointer"
-                >
-                  <div class="inline-flex items-center">
-                    <label
-                      class="relative flex items-center cursor-pointer"
-                      for="check-vertical-list-group4"
-                    >
-                      <input
-                        type="checkbox"
-                        class="w-5 h-5 transition-all border rounded-full shadow appearance-none cursor-pointer peer hover:shadow-md border-slate-300 checked:bg-slate-800 checked:border-slate-800"
-                        id="check-vertical-list-group4"
-                      />
-                      <span
-                        class="absolute text-blue-500 transform -translate-x-1/2 -translate-y-1/2 opacity-0 peer-checked:opacity-100 top-1/2 left-1/2"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="h-3.5 w-3.5"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                          stroke="currentColor"
-                          stroke-width="1"
-                        >
-                          <path
-                            fill-rule="evenodd"
-                            d="M16.707 5.293a1 1 0 010 1.414l-8 8 a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                            clip-rule="evenodd"
-                          ></path>
-                        </svg>
-                      </span>
-                    </label>
-                    <label
-                      class="ml-2 text-sm text-white cursor-pointer"
-                      for="check-vertical-list-group4"
-                    >
-                      Symbols
-                    </label>
-                  </div>
-                </label>
-              </div>
-            </nav>
+            </div>
           </div>
-        </div>
+          <div
+            role="button"
+            class="flex items-center w-full p-0 transition-all rounded-lg hover:bg-gray-950/20 focus:bg-slate-500 active:bg-slate-500 animate-fade animate-duration-800 animate-delay-2000">
+            <div class="inline-flex items-center">
+              <label
+                for="check-vertical-list-group2"
+                class="flex items-center w-full px-3 py-2 cursor-pointer"
+                ><label
+                  class="relative flex items-center cursor-pointer"
+                  for="check-vertical-list-group2"
+                  ><input
+                    type="checkbox"
+                    class="w-5 h-5 transition-all border rounded-full shadow appearance-none cursor-pointer peer hover:shadow-md checked:bg-slate-800 checked:border-black"
+                    id="check-vertical-list-group2" />
+                  <span
+                    class="absolute text-gray-300 dark:text-blue-500 transform -translate-x-1/2 -translate-y-1/2 opacity-0 peer-checked:opacity-100 top-1/2 left-1/2"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-3.5 w-3.5"
+                      viewbox="0 0 20 20"
+                      fill="currentcolor"
+                      stroke="currentcolor"
+                      stroke-width="1">
+                      <path
+                        fill-rule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clip-rule="evenodd"></path></svg></span
+                ></label>
+                <label
+                  class="ml-2 text-sm text-white cursor-pointer"
+                  for="check-vertical-list-group2"
+                  >Lowercase</label
+                ></label
+              >
+            </div>
+          </div>
+
+          <div
+            role="button"
+            class="flex items-center w-full p-0 transition-all rounded-lg hover:bg-gray-950/20 focus:bg-slate-500 active:bg-slate-500 animate-fade animate-duration-1500 animate-delay-2300">
+            <div class="inline-flex items-center">
+              <label
+                for="check-vertical-list-group2"
+                class="flex items-center w-full px-3 py-2 cursor-pointer"
+                ><label
+                  class="relative flex items-center cursor-pointer"
+                  for="check-vertical-list-group3"
+                  ><input
+                    type="checkbox"
+                    class="w-5 h-5 transition-all border rounded-full shadow appearance-none cursor-pointer peer hover:shadow-md checked:bg-slate-800 checked:border-black"
+                    id="check-vertical-list-group3" />
+                  <span
+                    class="absolute text-gray-300 dark:text-blue-500 transform -translate-x-1/2 -translate-y-1/2 opacity-0 peer-checked:opacity-100 top-1/2 left-1/2"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-3.5 w-3.5"
+                      viewbox="0 0 20 20"
+                      fill="currentcolor"
+                      stroke="currentcolor"
+                      stroke-width="1">
+                      <path
+                        fill-rule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clip-rule="evenodd"></path></svg></span
+                ></label>
+                <label
+                  class="ml-2 text-sm text-white cursor-pointer"
+                  for="check-vertical-list-group2"
+                  >Numbers</label
+                ></label
+              >
+            </div>
+          </div>
+
+          <div
+            role="button"
+            class="flex items-center w-full p-0 transition-all rounded-lg hover:bg-gray-950/20 focus:bg-slate-500 active:bg-slate-500 animate-fade animate-duration-1800 animate-delay-3000">
+            <div class="inline-flex items-center">
+              <label
+                for="check-vertical-list-group4"
+                class="flex items-center w-full px-3 py-2 cursor-pointer"
+                ><label
+                  class="relative flex items-center cursor-pointer"
+                  for="check-vertical-list-group4"
+                  ><input
+                    type="checkbox"
+                    class="w-5 h-5 transition-all border rounded-full shadow appearance-none cursor-pointer peer hover:shadow-md checked:bg-slate-800 checked:border-black"
+                    id="check-vertical-list-group4" />
+                  <span
+                    class="absolute text-gray-300 dark:text-blue-500 transform -translate-x-1/2 -translate-y-1/2 opacity-0 peer-checked:opacity-100 top-1/2 left-1/2"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-3.5 w-3.5"
+                      viewbox="0 0 20 20"
+                      fill="currentcolor"
+                      stroke="currentcolor"
+                      stroke-width="1">
+                      <path
+                        fill-rule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8 a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clip-rule="evenodd"></path></svg></span
+                ></label>
+                <label
+                  class="ml-2 text-sm text-white cursor-pointer"
+                  for="check-vertical-list-group4"
+                  >Symbols</label
+                ></label
+              >
+            </div>
+          </div>
+          <script
+            type="module"
+            src="./dist/modules/togglePassword.js"
+            defer></script>
+          <script
+            type="module"
+            src="./dist/modules/generatePassword.js"
+            defer></script>
+          <script
+            type="module"
+            src="./dist/modules/strengthBar.js"
+            defer></script>
         </div>
       </div>
     </div>
   </body>
-    <script  type="module" src="./dist/modules/togglePassword.js" defer></script>
-    <script  type="module" src="./dist/modules/generatePassword.js" defer></script>
-<script type="module" src="./dist/modules/strengthBar.js" defer></script>
 </html>
