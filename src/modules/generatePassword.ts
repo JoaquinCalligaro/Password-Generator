@@ -1,17 +1,18 @@
-// src/index.ts
-
-// Obtiene elementos del DOM
+// Elementos del DOM
+// En este primer bloque defino los elementos por ID del html. (Valores de entradas)
 const passwordInput = document.getElementById("password") as HTMLInputElement;
 const passwordLengthRange = document.getElementById("passwordLengthRange") as HTMLInputElement;
 const passwordLength = document.getElementById("passwordLength") as HTMLInputElement;
 
-// Checkboxes para incluir tipos de caracteres
+
+// Se Defininen los elementos del HTML (Checkboxes)
 const includeUppercase = document.getElementById("check-vertical-list-group1") as HTMLInputElement;
 const includeLowercase = document.getElementById("check-vertical-list-group2") as HTMLInputElement;
 const includeNumbers = document.getElementById("check-vertical-list-group3") as HTMLInputElement;
 const includeSymbols = document.getElementById("check-vertical-list-group4") as HTMLInputElement;
 
-// Función para obtener caracteres seleccionados
+
+// Construye el conjunto de caracteres disponibles basado en los checkboxes seleccionados
 function getSelectedCharacters(): string {
   let characters = "";
   if (includeUppercase?.checked) characters += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -21,7 +22,7 @@ function getSelectedCharacters(): string {
   return characters;
 }
 
-// Función para generar contraseña aleatoria
+// Generacion de contraseñas de acuerdo a la longitud indicada por el usuario.
 function generatePassword(length: number, characters: string): string {
   let password = "";
   for (let i = 0; i < length; i++) {
@@ -30,7 +31,8 @@ function generatePassword(length: number, characters: string): string {
   return password;
 }
 
-// Actualiza el valor y la contraseña
+// Genera y actualiza la contraseña usando los valores actuales de la interfaz (slider)
+// `void` indica que la función no devuelve ningún valor
 function updatePassword(): void {
   const length = parseInt(passwordLengthRange.value);
   passwordLength.value = length.toString();
@@ -38,13 +40,15 @@ function updatePassword(): void {
   passwordInput.value = generatePassword(length, characters);
 }
 
-// Eventos: mover slider o cambiar checkbox
+
+// Escucha cambios en slider y checkboxes para actualizar contraseña automáticamente
 passwordLengthRange?.addEventListener("input", updatePassword);
 [includeUppercase, includeLowercase, includeNumbers, includeSymbols].forEach(cb =>
   cb?.addEventListener("change", updatePassword)
 );
 
-// Al cargar la página: marcar checkbox y generar contraseña inicial de 12 caracteres
+
+// Inicializa la aplicación con configuración por defecto al cargar la página (Password = 12 y checkboxs marcadas)
 window.addEventListener("DOMContentLoaded", () => {
   includeUppercase.checked = true;
   includeLowercase.checked = true;
