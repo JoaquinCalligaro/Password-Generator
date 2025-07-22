@@ -1,5 +1,3 @@
-// strengthBar.ts
-
 interface StrengthConfig {
   weak: { color: string; threshold: number };
   medium: { color: string; threshold: number };
@@ -111,8 +109,6 @@ class PasswordStrengthBar {
         this.bars[i].className = `flex-1 h-2 rounded-xl transition-all duration-300 ${color}`;
       }
     }
-
-    
   }
 
   public refresh(): void {

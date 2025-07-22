@@ -22,7 +22,7 @@ function getSelectedCharacters(): string {
   return characters;
 }
 
-// Generacion de contraseñas de acuerdo a la longitud indicada por el usuario.
+// Generación de contraseñas de acuerdo a la longitud indicada por el usuario.
 function generatePassword(length: number, characters: string): string {
   let password = "";
   for (let i = 0; i < length; i++) {
@@ -48,7 +48,7 @@ passwordLengthRange?.addEventListener("input", updatePassword);
 );
 
 
-// Inicializa la aplicación con configuración por defecto al cargar la página (Password = 12 y checkboxs marcadas)
+// Inicializa la aplicación con configuración por defecto al cargar la página (Password = 12 y checkboxes marcadas)
 window.addEventListener("DOMContentLoaded", () => {
   includeUppercase.checked = true;
   includeLowercase.checked = true;
