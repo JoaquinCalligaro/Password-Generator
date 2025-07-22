@@ -36,7 +36,7 @@
         <!-- Input de contraseña -->
         <div class="relative mb-4">
 <input
-            type="password"
+            type="password" disabled
             id="password"
             class="w-full py-2 pl-3 pr-10 transition-colors border-2 border-red-300 rounded-md focus:outline-none focus:border-indigo-500 animate-fade-down animate-duration-500 animate-delay-200"
             placeholder="Password"
@@ -78,7 +78,7 @@
             PASSWORD LENGTH
           </label>
           <input
-            id="passwordLength"
+            id="passwordLength" disabled
             min="1"
             max="30"
             value="12"
@@ -292,7 +292,6 @@
       </div>
     </div>
   </body>
-    <script  type="module" src="./dist/app.js" defer></script>
     <script  type="module" src="./dist/modules/togglePassword.js" defer></script>
     <script  type="module" src="./dist/modules/generatePassword.js" defer></script>
 <script type="module" src="./dist/modules/strengthBar.js" defer></script>

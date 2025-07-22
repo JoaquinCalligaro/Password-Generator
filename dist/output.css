@@ -357,9 +357,6 @@
   .animate-fade-down {
     animation: fade-down var(--default-animation-duration, 1s) var(--default-animation-timing-function, ease) var(--default-animation-delay, 0s) both;
   }
-  .animate-fade-out {
-    animation: fade-out 0.6s ease-out both;
-  }
   .cursor-pointer {
     cursor: pointer;
   }
@@ -578,10 +575,6 @@
     --tw-ease: var(--ease-in-out);
     transition-timing-function: var(--ease-in-out);
   }
-  .ease-out {
-    --tw-ease: var(--ease-out);
-    transition-timing-function: var(--ease-out);
-  }
   .animate-delay-200 {
     animation-delay: 200ms;
   }
@@ -599,12 +592,6 @@
   }
   .animate-delay-1000 {
     animation-delay: 1000ms;
-  }
-  .animate-delay-1300 {
-    animation-delay: 1300ms;
-  }
-  .animate-delay-1300 {
-    animation-delay: 1300ms;
   }
   .animate-delay-1500 {
     animation-delay: 1500ms;
@@ -641,12 +628,6 @@
   }
   .animate-duration-800 {
     animation-duration: 800ms;
-  }
-  .animate-duration-1000 {
-    animation-duration: 1000ms;
-  }
-  .animate-duration-1000 {
-    animation-duration: 1000ms;
   }
   .animate-duration-1200 {
     animation-duration: 1200ms;
@@ -1590,14 +1571,6 @@
 @property --tw-ease {
   syntax: "*";
   inherits: false;
-}
-@keyframes fade-out {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
 }
 @keyframes blurred-fade-in {
   0% {
