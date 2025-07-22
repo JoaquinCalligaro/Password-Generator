@@ -189,106 +189,6 @@
   }
 }
 @layer utilities {
-  .motion-preset-confetti {
-    display: block;
-    -webkit-appearance: none;
-    appearance: none;
-    position: relative;
-    outline: 0;
-    z-index: 1;
-    margin: 0;
-    animation: RomboConfettiPop var(--motion-duration) var(--motion-timing)  both;
-    @keyframes RomboConfettiPop {
-      0% {
-        opacity: 0;
-        transform: scale(1);
-      }
-      33% {
-        opacity: 1;
-        transform: scale(1.15);
-      }
-      50% {
-        transform: scale(0.975);
-      }
-      65% {
-        transform: scale(1.025);
-      }
-      80% {
-        transform: scale(0.99);
-      }
-      87% {
-        transform: scale(1.01);
-      }
-      100% {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-    &:after {
-      display: block;
-      animation-duration: var(--motion-duration);
-      animation-timing-function: var(--motion-timing);
-      animation-iteration-count: 1;
-      animation-direction: normal;
-      animation-fill-mode: forwards;
-      animation-name: bottomfetti;
-      position: absolute;
-      content: " ";
-      z-index: -1;
-      width: 100%;
-      height: 100%;
-      left: -20%;
-      top: 100%;
-      transition: all var(--motion-timing) var(--motion-duration);
-      background-repeat: no-repeat;
-      background-image: radial-gradient(circle, #a2dd60 20%, transparent 20%),radial-gradient(circle, transparent 20%, #ee65a9 20%, transparent 30%),radial-gradient(circle, #6092dd 20%, transparent 20%),radial-gradient(circle, #f3c548 20%, transparent 20%),radial-gradient(circle, transparent 10%, #46ec99 15%, transparent 20%),radial-gradient(circle, #f03e47 20%, transparent 20%),radial-gradient(circle, #7b4df7 20%, transparent 20%),radial-gradient(circle, #3ff1bc 20%, transparent 20%);
-      background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 10% 10%, 20% 20%;
-    }
-    &:before {
-      display: block;
-      animation-duration: var(--motion-duration);
-      animation-timing-function: var(--motion-timing);
-      animation-iteration-count: 1;
-      animation-direction: normal;
-      animation-fill-mode: forwards;
-      animation-name: topfetti;
-      position: absolute;
-      content: " ";
-      width: 100%;
-      height: 100%;
-      left: -5%;
-      background-repeat: no-repeat;
-      transition: all var(--motion-timing) var(--motion-duration);
-      z-index: -1;
-      top: -90%;
-      background-image: radial-gradient(circle, #a2dd60 30%, transparent 20%),radial-gradient(circle, transparent 20%, #ee65a9 40%, transparent 20%),radial-gradient(circle, #6092dd 30%, transparent 20%),radial-gradient(circle, #f3c548 30%, transparent 20%),radial-gradient(circle, transparent 10%, #46ec99 15%, transparent 20%),radial-gradient(circle, #f03e47 30%, transparent 20%),radial-gradient(circle, #7b4df7 30%, transparent 30%),radial-gradient(circle, #3ff1bc 30%, transparent 20%),radial-gradient(circle, #48f088 30%, transparent 30%);
-      background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%, 10% 10%, 25% 25%;
-    }
-    @keyframes topfetti {
-      0% {
-        background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%, 40% 90%, 55% 90%, 70% 90%;
-      }
-      50% {
-        background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%, 50% 50%, 65% 20%, 90% 30%;
-      }
-      100% {
-        background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%, 50% 40%, 65% 10%, 90% 20%;
-        background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
-      }
-    }
-    @keyframes bottomfetti {
-      0% {
-        background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%,70% -10%, 70% 0%;
-      }
-      50% {
-        background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%, 105% 0%;
-      }
-      100% {
-        background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%, 110% 10%;
-        background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
-      }
-    }
-  }
   .absolute {
     position: absolute;
   }
@@ -459,12 +359,6 @@
   }
   .animate-fade-out {
     animation: fade-out 0.6s ease-out both;
-  }
-  .animate-jelly {
-    animation: jelly 1s ease-out forwards;
-  }
-  .animate-jump {
-    animation: jump var(--default-animation-duration, 0.5s) var(--default-animation-timing-function, ease) var(--default-animation-delay, 0s) both;
   }
   .cursor-pointer {
     cursor: pointer;
@@ -662,11 +556,6 @@
     -webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
     backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
   }
-  .transition {
-    transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter, display, visibility, content-visibility, overlay, pointer-events;
-    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
-    transition-duration: var(--tw-duration, var(--default-transition-duration));
-  }
   .transition-all {
     transition-property: all;
     transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
@@ -711,6 +600,12 @@
   .animate-delay-1000 {
     animation-delay: 1000ms;
   }
+  .animate-delay-1300 {
+    animation-delay: 1300ms;
+  }
+  .animate-delay-1300 {
+    animation-delay: 1300ms;
+  }
   .animate-delay-1500 {
     animation-delay: 1500ms;
   }
@@ -723,20 +618,47 @@
   .animate-delay-2000 {
     animation-delay: 2000ms;
   }
-  .animate-duration-500 {
-    animation-duration: 500ms;
+  .animate-delay-2500 {
+    animation-delay: 2500ms;
+  }
+  .animate-delay-2500 {
+    animation-delay: 2500ms;
+  }
+  .animate-delay-3000 {
+    animation-delay: 3000ms;
+  }
+  .animate-delay-3000 {
+    animation-delay: 3000ms;
   }
   .animate-duration-500 {
     animation-duration: 500ms;
   }
-  .animate-duration-\[1800ms\] {
+  .animate-duration-500 {
+    animation-duration: 500ms;
+  }
+  .animate-duration-800 {
+    animation-duration: 800ms;
+  }
+  .animate-duration-800 {
+    animation-duration: 800ms;
+  }
+  .animate-duration-1000 {
+    animation-duration: 1000ms;
+  }
+  .animate-duration-1000 {
+    animation-duration: 1000ms;
+  }
+  .animate-duration-1200 {
+    animation-duration: 1200ms;
+  }
+  .animate-duration-1200 {
+    animation-duration: 1200ms;
+  }
+  .animate-duration-1800 {
     animation-duration: 1800ms;
   }
-  .animate-duration-\[1800ms\] {
+  .animate-duration-1800 {
     animation-duration: 1800ms;
-  }
-  .motion-duration-2000 {
-    --motion-duration: 2000ms;
   }
   .peer-checked\:opacity-100 {
     &:is(:where(.peer):checked ~ *) {
@@ -1677,23 +1599,6 @@
     opacity: 0;
   }
 }
-@keyframes jump {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: scale(1.2);
-  }
-  100% {
-    transform: translateY(0);
-  }
-  0%, 100% {
-    transform: scale(1);
-  }
-  10% {
-    transform: scale(0.8);
-  }
-}
 @keyframes blurred-fade-in {
   0% {
     filter: blur(5px);
@@ -1702,32 +1607,6 @@
   100% {
     filter: blur(0);
     opacity: 1;
-  }
-}
-@keyframes jelly {
-  0% {
-    transform: scale(1, 1);
-  }
-  20% {
-    transform: scale(1.25, 0.75);
-  }
-  40% {
-    transform: scale(0.75, 1.25);
-  }
-  60% {
-    transform: scale(1.15, 0.85);
-  }
-  75% {
-    transform: scale(0.95, 1.05);
-  }
-  85% {
-    transform: scale(1.05, 0.95);
-  }
-  92% {
-    transform: scale(1, 1.02);
-  }
-  100% {
-    transform: scale(1, 1);
   }
 }
 @keyframes fade {
