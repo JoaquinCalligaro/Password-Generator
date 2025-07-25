@@ -1,7 +1,13 @@
 // darkMode.ts
-// Este código debe ser agregado al <head> para prevenir parpadeos durante la carga
+// Este modulo debe ser agregado al <head> para prevenir parpadeos durante la carga
+/**  Gestor principal de temas
+ * - Aplica temas rapido y evita los parpadeos en pantalla
+ * - Detecta preferencias del sistema automáticamente
+ * - Persiste la configuracion en localStorage
+ * - Sincroniza los cambios de tema con el sistema en tiempo real */
 class DarkModeManager {
     constructor() {
+        // clave para almacenar tema en localStorage
         this.STORAGE_KEY = 'hs_theme';
         this.html = document.documentElement;
         this.init();
@@ -89,7 +95,7 @@ class DarkModeManager {
      */
     dispatchThemeChange(theme) {
         const event = new CustomEvent('themechange', {
-            detail: { theme }
+            detail: { theme },
         });
         document.dispatchEvent(event);
         // Actualizar visibilidad de botones después del cambio
@@ -166,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function setupPrelineButtons(themeManager) {
     // Seleccionar todos los botones con clase hs-dark-mode
     const themeButtons = document.querySelectorAll('.hs-dark-mode');
-    themeButtons.forEach(button => {
+    themeButtons.forEach((button) => {
         button.addEventListener('click', (e) => {
             e.preventDefault();
             const clickValue = button.getAttribute('data-hs-theme-click-value');
@@ -185,7 +191,7 @@ function updateButtonVisibility() {
     const isDarkMode = html.classList.contains('dark');
     // Botones para activar modo oscuro (se muestran en modo claro)
     const darkModeButtons = document.querySelectorAll('[data-hs-theme-click-value="dark"]');
-    darkModeButtons.forEach(button => {
+    darkModeButtons.forEach((button) => {
         if (isDarkMode) {
             button.classList.add('hs-dark-mode-active:hidden', 'hidden');
             button.classList.remove('block');
@@ -197,7 +203,7 @@ function updateButtonVisibility() {
     });
     // Botones para activar modo claro (se muestran en modo oscuro)
     const lightModeButtons = document.querySelectorAll('[data-hs-theme-click-value="light"]');
-    lightModeButtons.forEach(button => {
+    lightModeButtons.forEach((button) => {
         if (isDarkMode) {
             button.classList.remove('hs-dark-mode-active:hidden', 'hidden');
             button.classList.add('hs-dark-mode-active:block', 'block');

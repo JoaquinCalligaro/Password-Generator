@@ -1,17 +1,25 @@
 // darkMode.ts
-// Este código debe ser agregado al <head> para prevenir parpadeos durante la carga
+// Este modulo debe ser agregado al <head> para prevenir parpadeos durante la carga
 
 type ThemeMode = 'light' | 'dark' | 'auto' | null;
+//null = fallback
 
+// API para manejar temas (light, dark y auto) con soporte para sistema y localStorage
 interface ThemeManager {
   init(): void;
   setTheme(theme: ThemeMode): void;
   getStoredTheme(): ThemeMode;
   getSystemPreference(): boolean;
 }
-
+/**  Gestor principal de temas
+ * - Aplica temas rapido y evita los parpadeos en pantalla
+ * - Detecta preferencias del sistema automáticamente
+ * - Persiste la configuracion en localStorage
+ * - Sincroniza los cambios de tema con el sistema en tiempo real */
 class DarkModeManager implements ThemeManager {
+  // clave para almacenar tema en localStorage
   private readonly STORAGE_KEY = 'hs_theme';
+  //Referencia al elemento HTML raiz para aplicar las clases en css(tailwind)
   private readonly html: HTMLElement;
 
   constructor() {
@@ -26,11 +34,13 @@ class DarkModeManager implements ThemeManager {
     const storedTheme = this.getStoredTheme();
     const systemPrefersDark = this.getSystemPreference();
 
-    const isLightOrAuto = storedTheme === 'light' || 
+    const isLightOrAuto =
+      storedTheme === 'light' ||
       (storedTheme === 'auto' && !systemPrefersDark) ||
       (!storedTheme && !systemPrefersDark);
 
-    const isDarkOrAuto = storedTheme === 'dark' || 
+    const isDarkOrAuto =
+      storedTheme === 'dark' ||
       (storedTheme === 'auto' && systemPrefersDark) ||
       (!storedTheme && systemPrefersDark);
 
@@ -88,7 +98,8 @@ class DarkModeManager implements ThemeManager {
     const storedTheme = this.getStoredTheme();
     const systemPrefersDark = this.getSystemPreference();
 
-    const shouldBeDark = storedTheme === 'dark' || 
+    const shouldBeDark =
+      storedTheme === 'dark' ||
       (storedTheme === 'auto' && systemPrefersDark) ||
       (!storedTheme && systemPrefersDark);
 
@@ -108,11 +119,11 @@ class DarkModeManager implements ThemeManager {
    * Dispara evento personalizado cuando cambia el tema
    */
   private dispatchThemeChange(theme: 'light' | 'dark'): void {
-    const event = new CustomEvent('themechange', { 
-      detail: { theme } 
+    const event = new CustomEvent('themechange', {
+      detail: { theme },
     });
     document.dispatchEvent(event);
-    
+
     // Actualizar visibilidad de botones después del cambio
     setTimeout(() => {
       if (typeof updateButtonVisibility === 'function') {
@@ -139,7 +150,7 @@ class DarkModeManager implements ThemeManager {
 }
 
 // Versión simplificada para uso inmediato en <head>
-(function() {
+(function () {
   const html = document.documentElement;
   const getStoredTheme = (): string | null => {
     try {
@@ -148,7 +159,7 @@ class DarkModeManager implements ThemeManager {
       return null;
     }
   };
-  
+
   const getSystemPreference = (): boolean => {
     try {
       return window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -159,12 +170,14 @@ class DarkModeManager implements ThemeManager {
 
   const storedTheme = getStoredTheme();
   const systemPrefersDark = getSystemPreference();
-  
-  const isLightOrAuto = storedTheme === 'light' || 
+
+  const isLightOrAuto =
+    storedTheme === 'light' ||
     (storedTheme === 'auto' && !systemPrefersDark) ||
     (!storedTheme && !systemPrefersDark);
-    
-  const isDarkOrAuto = storedTheme === 'dark' || 
+
+  const isDarkOrAuto =
+    storedTheme === 'dark' ||
     (storedTheme === 'auto' && systemPrefersDark) ||
     (!storedTheme && systemPrefersDark);
 
@@ -194,12 +207,12 @@ document.addEventListener('DOMContentLoaded', () => {
 function setupPrelineButtons(themeManager: DarkModeManager): void {
   // Seleccionar todos los botones con clase hs-dark-mode
   const themeButtons = document.querySelectorAll('.hs-dark-mode');
-  
-  themeButtons.forEach(button => {
+
+  themeButtons.forEach((button) => {
     button.addEventListener('click', (e) => {
       e.preventDefault();
       const clickValue = button.getAttribute('data-hs-theme-click-value');
-      
+
       if (clickValue === 'dark' || clickValue === 'light') {
         themeManager.setTheme(clickValue as ThemeMode);
         updateButtonVisibility();
@@ -215,10 +228,12 @@ function setupPrelineButtons(themeManager: DarkModeManager): void {
 function updateButtonVisibility(): void {
   const html = document.documentElement;
   const isDarkMode = html.classList.contains('dark');
-  
+
   // Botones para activar modo oscuro (se muestran en modo claro)
-  const darkModeButtons = document.querySelectorAll('[data-hs-theme-click-value="dark"]');
-  darkModeButtons.forEach(button => {
+  const darkModeButtons = document.querySelectorAll(
+    '[data-hs-theme-click-value="dark"]'
+  );
+  darkModeButtons.forEach((button) => {
     if (isDarkMode) {
       button.classList.add('hs-dark-mode-active:hidden', 'hidden');
       button.classList.remove('block');
@@ -229,8 +244,10 @@ function updateButtonVisibility(): void {
   });
 
   // Botones para activar modo claro (se muestran en modo oscuro)
-  const lightModeButtons = document.querySelectorAll('[data-hs-theme-click-value="light"]');
-  lightModeButtons.forEach(button => {
+  const lightModeButtons = document.querySelectorAll(
+    '[data-hs-theme-click-value="light"]'
+  );
+  lightModeButtons.forEach((button) => {
     if (isDarkMode) {
       button.classList.remove('hs-dark-mode-active:hidden', 'hidden');
       button.classList.add('hs-dark-mode-active:block', 'block');
