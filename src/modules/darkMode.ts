@@ -74,8 +74,10 @@ class DarkModeManager implements ThemeManager {
     try {
       const stored = localStorage.getItem(this.STORAGE_KEY) as ThemeMode;
       const validThemes: string[] = ['light', 'dark', 'auto'];
+      //Validar que el valor almacenado sea un tema valido
       return validThemes.indexOf(stored || '') !== -1 ? stored : null;
     } catch {
+      //fallar o entrar por fallback si el sistema localStorage no está disponible
       return null;
     }
   }
@@ -85,8 +87,10 @@ class DarkModeManager implements ThemeManager {
    */
   getSystemPreference(): boolean {
     try {
+      //CSS Media Query para detectar la preferencia del sistema
       return window.matchMedia('(prefers-color-scheme: dark)').matches;
     } catch {
+      //Fallback para navegadores sin soporte
       return false;
     }
   }
