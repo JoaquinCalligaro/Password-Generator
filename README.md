@@ -2,7 +2,7 @@
 
 Un generador de contraseñas moderno y seguro con interfaz elegante desarrollado con TypeScript y Tailwind CSS v4.
 
-## 📱 Vista Previa
+## 🖥️/📱 Vista Previa
 
 ### 🖥️ Versión Desktop
 
