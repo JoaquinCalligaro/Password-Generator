@@ -61,9 +61,10 @@ class DarkModeManager implements ThemeManager {
     if (theme) {
       localStorage.setItem(this.STORAGE_KEY, theme);
     } else {
+      //Elimina o remueve la configuracion manual, usar la del sistema por defecto
       localStorage.removeItem(this.STORAGE_KEY);
     }
-
+    //Se aplican los cambios visibles inmediatamente
     this.applyTheme();
   }
 
@@ -101,12 +102,12 @@ class DarkModeManager implements ThemeManager {
   private applyTheme(): void {
     const storedTheme = this.getStoredTheme();
     const systemPrefersDark = this.getSystemPreference();
-
+    //Calcula si debe usar el tema oscuro
     const shouldBeDark =
       storedTheme === 'dark' ||
       (storedTheme === 'auto' && systemPrefersDark) ||
       (!storedTheme && systemPrefersDark);
-
+    //Se aplican las clases de css
     if (shouldBeDark) {
       this.html.classList.remove('light');
       this.html.classList.add('dark');
@@ -115,7 +116,7 @@ class DarkModeManager implements ThemeManager {
       this.html.classList.add('light');
     }
 
-    // Dispatch event para otros componentes
+    // notifica el cambio a otros componentes
     this.dispatchThemeChange(shouldBeDark ? 'dark' : 'light');
   }
 
