@@ -42,8 +42,10 @@ class DarkModeManager {
             localStorage.setItem(this.STORAGE_KEY, theme);
         }
         else {
+            //Elimina o remueve la configuracion manual, usar la del sistema por defecto
             localStorage.removeItem(this.STORAGE_KEY);
         }
+        //Se aplican los cambios visibles inmediatamente
         this.applyTheme();
     }
     /**
@@ -80,9 +82,11 @@ class DarkModeManager {
     applyTheme() {
         const storedTheme = this.getStoredTheme();
         const systemPrefersDark = this.getSystemPreference();
+        //Calcula si debe usar el tema oscuro
         const shouldBeDark = storedTheme === 'dark' ||
             (storedTheme === 'auto' && systemPrefersDark) ||
             (!storedTheme && systemPrefersDark);
+        //Se aplican las clases de css
         if (shouldBeDark) {
             this.html.classList.remove('light');
             this.html.classList.add('dark');
@@ -91,7 +95,7 @@ class DarkModeManager {
             this.html.classList.remove('dark');
             this.html.classList.add('light');
         }
-        // Dispatch event para otros componentes
+        // notifica el cambio a otros componentes
         this.dispatchThemeChange(shouldBeDark ? 'dark' : 'light');
     }
     /**
@@ -126,7 +130,10 @@ class DarkModeManager {
         }
     }
 }
-// Versión simplificada para uso inmediato en <head>
+/**
+ * !Script que se ejecuta de manera inmediata para evitar parpadeos del tema
+ * !se ejecuta antes que el DOM este listo por lo tanto esta funcion se la llama en el head
+ */
 (function () {
     const html = document.documentElement;
     const getStoredTheme = () => {
@@ -137,6 +144,7 @@ class DarkModeManager {
             return null;
         }
     };
+    //Obtiene tema guardado sin dependencias externas
     const getSystemPreference = () => {
         try {
             return window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -147,13 +155,14 @@ class DarkModeManager {
     };
     const storedTheme = getStoredTheme();
     const systemPrefersDark = getSystemPreference();
+    // Lógica de decisión duplicada pero necesaria para timing crítico
     const isLightOrAuto = storedTheme === 'light' ||
         (storedTheme === 'auto' && !systemPrefersDark) ||
         (!storedTheme && !systemPrefersDark);
     const isDarkOrAuto = storedTheme === 'dark' ||
         (storedTheme === 'auto' && systemPrefersDark) ||
         (!storedTheme && systemPrefersDark);
-    // Aplicar tema inmediatamente
+    // Aplicar tema inmediatamente antes que cualquier css se renderice
     if (isLightOrAuto) {
         html.classList.remove('dark');
         html.classList.add('light');
