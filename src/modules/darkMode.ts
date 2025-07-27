@@ -154,7 +154,10 @@ class DarkModeManager implements ThemeManager {
   }
 }
 
-// Versión simplificada para uso inmediato en <head>
+/**
+ * !Script que se ejecuta de manera inmediata para evitar parpadeos del tema
+ * !se ejecuta antes que el DOM este listo por lo tanto esta funcion se la llama en el head
+ */
 (function () {
   const html = document.documentElement;
   const getStoredTheme = (): string | null => {
@@ -164,7 +167,7 @@ class DarkModeManager implements ThemeManager {
       return null;
     }
   };
-
+  //Obtiene tema guardado sin dependencias externas
   const getSystemPreference = (): boolean => {
     try {
       return window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -175,7 +178,7 @@ class DarkModeManager implements ThemeManager {
 
   const storedTheme = getStoredTheme();
   const systemPrefersDark = getSystemPreference();
-
+  // Lógica de decisión duplicada pero necesaria para timing crítico
   const isLightOrAuto =
     storedTheme === 'light' ||
     (storedTheme === 'auto' && !systemPrefersDark) ||
@@ -186,7 +189,7 @@ class DarkModeManager implements ThemeManager {
     (storedTheme === 'auto' && systemPrefersDark) ||
     (!storedTheme && systemPrefersDark);
 
-  // Aplicar tema inmediatamente
+  // Aplicar tema inmediatamente antes que cualquier css se renderice
   if (isLightOrAuto) {
     html.classList.remove('dark');
     html.classList.add('light');
